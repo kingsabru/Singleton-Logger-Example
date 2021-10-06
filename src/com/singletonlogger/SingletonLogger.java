@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SingletonLogger {
-    public static SingletonLogger logger;
+    private static SingletonLogger logger;
 
     private final String logFile = "singleton_log.txt";
     private PrintWriter writer;
