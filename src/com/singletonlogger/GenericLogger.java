@@ -9,6 +9,7 @@ public class GenericLogger {
     private PrintWriter writer;
 
     public GenericLogger(){
+        // Initialize PrintWriter to write formatted text to a file
         try {
             FileWriter fw = new FileWriter(logFile);
             writer = new PrintWriter(fw, true);
@@ -16,14 +17,14 @@ public class GenericLogger {
     }
 
     public void logWithdraw (String account, double amount) {
-        writer.println("WITHDRAW (" + account + "): " + amount + "$");
+        writer.println("WITHDRAW (" + account + "): $" + amount);
     }
 
     public void logDeposit (String account, double amount) {
-        writer.println("DEPOSIT (" + account + "): " + amount + "$");
+        writer.println("DEPOSIT (" + account + "): $" + amount);
     }
 
     public void logTransfer (String fromAccount, String toAccount, double amount) {
-        writer.println("TRANSFER (" + fromAccount + "->" + toAccount + "): " + amount + "$");
+        writer.println("TRANSFER (" + fromAccount + "->" + toAccount + "): $" + amount);
     }
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SingletonLogger {
-    private static SingletonLogger logger;
+    private static SingletonLogger logger; // Private static variable to hold single instance
 
     private final String logFile = "singleton_log.txt";
     private PrintWriter writer;
@@ -18,7 +18,7 @@ public class SingletonLogger {
         } catch (IOException e) {}
     }
 
-
+    // Thread Safe Singleton (Double Locked)
     public static SingletonLogger getInstance(){
         if(logger == null){
             synchronized (SingletonLogger.class){
@@ -31,14 +31,14 @@ public class SingletonLogger {
     }
 
     public void logWithdraw (String account, double amount) {
-        writer.println("WITHDRAW (" + account + "): " + amount + "$");
+        writer.println("WITHDRAW (" + account + "): $" + amount);
     }
 
     public void logDeposit (String account, double amount) {
-        writer.println("DEPOSIT (" + account + "): " + amount + "$");
+        writer.println("DEPOSIT (" + account + "): $" + amount);
     }
 
     public void logTransfer (String fromAccount, String toAccount, double amount) {
-        writer.println("TRANSFER (" + fromAccount + "->" + toAccount + "): " + amount + "$");
+        writer.println("TRANSFER (" + fromAccount + "->" + toAccount + "): $" + amount);
     }
 }
